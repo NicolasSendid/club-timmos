@@ -26,6 +26,14 @@ Nom : ${data.apporteur_nom}
 Email : ${data.apporteur_email}
 Téléphone : ${data.apporteur_tel}
 
+Prospect :
+
+Nom : ${data.prospect_nom}
+Prenom : ${data.prospect_prenom}
+Téléphone : ${data.prospect_tel}
+Email : ${data.prospect_email}
+Adresse : ${data.prospect_adresse}
+
 Contact recommandé :
 ${data.contact_recommande}
     `,

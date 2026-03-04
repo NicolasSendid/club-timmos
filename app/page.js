@@ -48,10 +48,23 @@ export default function Home() {
         <input name="prospect_tel" placeholder="Téléphone" required />
         <input name="prospect_email" type="email" placeholder="Email" />
         <input name="prospect_adresse" placeholder="Adresse du bien" required />
-   <textarea
-          name="Infos_bien"
-          placeholder="Informations sur le bien"
-          required
+   <h3 style={{ marginTop: "20px" }}>Type de bien</h3>
+
+<div style={{ marginTop: "10px" }}>
+  <label><input type="checkbox" name="type_bien" value="Maison" /> Maison</label><br />
+  <label><input type="checkbox" name="type_bien" value="Appartement" /> Appartement</label><br />
+  <label><input type="checkbox" name="type_bien" value="Terrain" /> Terrain</label><br />
+  <label><input type="checkbox" name="type_bien" value="Immeuble" /> Immeuble</label><br />
+  <label><input type="checkbox" name="type_bien" value="Commerce" /> Commerce</label>
+</div>
+
+<h3 style={{ marginTop: "20px" }}>Délai estimé de mise en vente (facultatif)</h3>
+
+<div style={{ marginTop: "10px" }}>
+  <label><input type="radio" name="delai_vente" value="Moins de 3 mois" /> Moins de 3 mois</label><br />
+  <label><input type="radio" name="delai_vente" value="Moins de 6 mois" /> Moins de 6 mois</label><br />
+  <label><input type="radio" name="delai_vente" value="Plus de 6 mois" /> Plus de 6 mois</label>
+</div>
 
         {/* COLLABORATEUR */}
         <h2 style={{ marginTop: "30px" }}>Collaborateur en charge</h2>

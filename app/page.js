@@ -1,47 +1,32 @@
-"use client";
-import { useState } from "react";
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-export default function Home() {
-  const [status, setStatus] = useState("");
+  const formData = new FormData(e.target);
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
+  // récupérer tous les types cochés
+  const types = formData.getAll("type_bien");
 
-    const res = await fetch("/api/send", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      const types = formData.getAll("type_bien");
+  // transformer en objet
+  const data = Object.fromEntries(formData.entries());
 
-const payload = {
-  ...Object.fromEntries(formData),
-  type_bien: types
-};
+  // remplacer type_bien par le tableau
+  data.type_bien = types;
 
-const res = await fetch("/api/send", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(payload),
-});
-    });
+  const response = await fetch("/api/send", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 
-    if (res.ok) {
-      setStatus("✅ Votre recommandation a bien été envoyée.");
-      e.target.reset();
-    } else {
-      setStatus("❌ Une erreur est survenue.");
-    }
+  if (response.ok) {
+    alert("Demande envoyée avec succès !");
+    e.target.reset();
+  } else {
+    alert("Erreur lors de l'envoi.");
   }
-
-  return (
-    <div className="container">
-      <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <img src="/logo.png" alt="TimmoS" style={{ width: "200px" }} />
-        <h1>Club Apporteurs TimmoS</h1>
-        <p>Recevez 300€ par recommandation conclue.</p>
-      </div>
-
-      <form onSubmit={handleSubmit}>
+};
 
         {/* L'APPORTEUR */}
         <h2 style={{ marginTop: "30px" }}>L'apporteur</h2>

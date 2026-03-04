@@ -18,12 +18,14 @@ export async function POST(req) {
   const collaborateurEmail = data.collaborateur;
 
   // 📩 Mail interne principal
+  subject: `Nouveau dossier ${dossierNumber}`,
   await transporter.sendMail({
     from: process.env.SMTP_USER,
     to: process.env.SMTP_USER,
     subject: "Nouvel apport d'affaires - Club TimmoS",
     text: `
 === APPORTEUR ===
+Dossier : ${dossierNumber}
 Nom : ${data.apporteur_nom}
 Prénom : ${data.apporteur_prenom}
 Téléphone : ${data.apporteur_tel}
@@ -41,19 +43,26 @@ Collaborateur sélectionné : ${collaborateurEmail}
   });
 
   // 📩 Copie au collaborateur
-  await transporter.sendMail({
-    from: process.env.SMTP_USER,
-    to: collaborateurEmail,
-    subject: "Nouveau prospect attribué",
-    text: `
-Un nouveau prospect vous a été attribué :
+ await transporter.sendMail({
+  from: process.env.SMTP_USER,
+  to: collaborateurEmail,
+  subject: `Nouveau dossier ${dossierNumber} attribué`,
+  text: `
+Dossier : ${dossierNumber}
 
+=== PROSPECT ===
 Nom : ${data.prospect_nom} ${data.prospect_prenom}
 Téléphone : ${data.prospect_tel}
+Email : ${data.prospect_email}
 Adresse : ${data.prospect_adresse}
-    `,
-  });
 
+=== APPORTEUR ===
+Nom : ${data.apporteur_nom} ${data.apporteur_prenom}
+Téléphone : ${data.apporteur_tel}
+Email : ${data.apporteur_email}
+  `,
+});
+  
   // 📩 Confirmation à l’apporteur
   await transporter.sendMail({
     from: process.env.SMTP_USER,

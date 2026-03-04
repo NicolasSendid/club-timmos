@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <div className="container">
       <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <Image src="/logo.png" alt="Timmos" width={180} height={180} />
+        <Image src="/logo.png" alt="TimmoS" width={180} height={180} />
         <h1>Club TimmoS</h1>
         <p>Apporteurs et Partenaires, recevez 300€ pour vos recommandations à la conclusion de l'acte définitif de vente!</p>
       </div>
@@ -36,12 +36,12 @@ export default function Home() {
         <input name="apporteur_nom" placeholder="Votre nom" required />
         <input name="apporteur_email" placeholder="Votre email" required />
         <input name="apporteur_tel" placeholder="Votre téléphone" required />
+  
       <form onSubmit={handleSubmit}>
         <input name="prospect_nom" placeholder="Nom de la personne recommandée" required />
         <input name="prospect_email" placeholder="Email de la personne recommandée" required />
         <input name="prospect_tel" placeholder="Téléphone de la personne recommandée" required />
         <input name="prospect_adresse" placeholder="Adresse de la personne recommandée" required />
-          required
         />
         <button type="submit">Envoyer la recommandation</button>
       </form>

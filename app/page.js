@@ -44,7 +44,7 @@ export default function Home() {
         <input name="prospect_email" placeholder="Email de la personne recommandee" required />
         <input name="prospect_adresse" placeholder="Adresse de la personne recommandee" required />
         <textarea
-          name="contact_recommande"
+          name="informations_bien"
           placeholder="Informations sur le bien"
           required
         />

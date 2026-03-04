@@ -44,7 +44,7 @@ Nous reviendrons vers vous si le dossier aboutit.
 
 Merci pour votre confiance.
 
-L'équipe TimmoS
+L'équipe Timmos
     `,
   });
 

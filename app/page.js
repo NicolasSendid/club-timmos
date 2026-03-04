@@ -38,14 +38,6 @@ export default function Home() {
         <input name="apporteur_email" placeholder="Votre email" required />
         <input name="apporteur_tel" placeholder="Votre téléphone" required />
   
-   return (
-    <div className="container">
-      <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <Image src="/logo.png" alt="TimmoS" width={180} height={180} />
-        <h1>Personne recommandée</h1>
-        <p>Veuillez saisir les informations suivantes</p>
-      </div>
-  
         <input name="prospect_nom" placeholder="Nom de la personne recommandee" required />
         <input name="prospect_prenom" placeholder="Prenom de la personne recommandee" required />
         <input name="prospect_tel" placeholder="Telephone de la personne recommandee" required />      

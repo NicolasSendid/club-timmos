@@ -40,8 +40,8 @@ export default function Home() {
         <input name="apporteur_tel" placeholder="Téléphone" required />
         <input name="apporteur_email" type="email" placeholder="Email" required />
 
-        {/* LE PROSPECT */}
-        <h2 style={{ marginTop: "30px" }}>Le Prospect</h2>
+        {/* VOTRE RECOMMANDATION */}
+        <h2 style={{ marginTop: "30px" }}>Votre recommandation</h2>
 
         <input name="prospect_nom" placeholder="Nom" required />
         <input name="prospect_prenom" placeholder="Prénom" required />

@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Club Timmos",
+  title: "Club TimmoS",
   description: "Programme Apporteurs d'Affaires - TimmoS",
 };
 

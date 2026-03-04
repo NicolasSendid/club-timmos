@@ -25,8 +25,8 @@ export default function Home() {
   return (
     <div className="container">
       <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <img src="/logo.png" alt="Timmos" style={{ width: "200px" }} />
-        <h1>Club Apporteurs Timmos</h1>
+        <img src="/logo.png" alt="TimmoS" style={{ width: "200px" }} />
+        <h1>Club Apporteurs TimmoS</h1>
         <p>Recevez 300€ par recommandation conclue.</p>
       </div>
 
@@ -54,9 +54,10 @@ export default function Home() {
 
         <select name="collaborateur" required>
           <option value="">Sélectionner un collaborateur</option>
-          <option value="marie@agence.fr">Marie Dupont</option>
-          <option value="paul@agence.fr">Paul Martin</option>
-          <option value="julie@agence.fr">Julie Bernard</option>
+          <option value="nstimmos@gmail.com">Nicolas SENDID</option>
+          <option value="cstimmos@gmail.com">Christel SENDID</option>
+          <option value="gdstimmos@gmail.com">Gonçalo De Sousa</option>
+          <option value="heloise.timmos@gmail.com">Héloïse SENDID IUNGWIRTH</option>
         </select>
 
         {/* RGPD */}
@@ -64,7 +65,7 @@ export default function Home() {
           <label style={{ fontSize: "14px" }}>
             <input type="checkbox" name="rgpd" required />  
             Je confirme avoir informé le prospect que ses données sont transmises 
-            à l'agence Timmos dans le cadre d'une mise en relation commerciale.
+            à l'agence TimmoS dans le cadre d'une mise en relation commerciale.
           </label>
         </div>
 

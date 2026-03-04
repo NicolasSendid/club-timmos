@@ -29,7 +29,7 @@ export default function Home() {
       <div style={{ textAlign: "center", marginBottom: "30px" }}>
         <Image src="/logo.png" alt="Timmos" width={180} height={180} />
         <h1>Club Apporteurs Timmos</h1>
-        <p>Recevez 300€ par recommandation conclue.</p>
+        <p>Apporteurs et Partenaires, recevez 300€ pour vos recommandations à la conclusion de l'acte définitif de vente!</p>
       </div>
 
       <form onSubmit={handleSubmit}>

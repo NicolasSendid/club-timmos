@@ -46,7 +46,7 @@ ${data.informations_bien}
     to: data.apporteur_email,
     subject: "Votre recommandation a bien été reçue",
     text: `
-Bonjour ${date.apporteur_prenom} ${data.apporteur_nom},
+Bonjour ${data.apporteur_prenom} ${data.apporteur_nom},
 
 Nous avons bien reçu votre recommandation.
 Vos données seront enregistrées et protégées dans notre logiciel Hektor - La Boîte Immo

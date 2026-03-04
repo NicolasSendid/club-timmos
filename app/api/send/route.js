@@ -1,4 +1,3 @@
-
 import nodemailer from "nodemailer";
 
 export async function POST(req) {
@@ -14,43 +13,55 @@ export async function POST(req) {
     },
   });
 
-  // 📩 Mail pour toi
+  const collaborateurEmail = data.collaborateur;
+
+  // 📩 Mail interne principal
   await transporter.sendMail({
     from: process.env.SMTP_USER,
     to: process.env.SMTP_USER,
     subject: "Nouvel apport d'affaires - Club TimmoS",
     text: `
-Nouvel apport :
-
+=== APPORTEUR ===
 Nom : ${data.apporteur_nom}
-Prenom : ${data.apporteur_prenom}
-Email : ${data.apporteur_email}
+Prénom : ${data.apporteur_prenom}
 Téléphone : ${data.apporteur_tel}
+Email : ${data.apporteur_email}
 
-Prospect :
-
+=== PROSPECT ===
 Nom : ${data.prospect_nom}
-Prenom : ${data.prospect_prenom}
+Prénom : ${data.prospect_prenom}
 Téléphone : ${data.prospect_tel}
 Email : ${data.prospect_email}
-Adresse : ${data.prospect_adresse}
+Adresse du bien : ${data.prospect_adresse}
 
-Informations sur le bien :
-${data.informations_bien}
+Collaborateur sélectionné : ${collaborateurEmail}
     `,
   });
 
-  // 📩 Mail de confirmation à l’apporteur
+  // 📩 Copie au collaborateur
+  await transporter.sendMail({
+    from: process.env.SMTP_USER,
+    to: collaborateurEmail,
+    subject: "Nouveau prospect attribué",
+    text: `
+Un nouveau prospect vous a été attribué :
+
+Nom : ${data.prospect_nom} ${data.prospect_prenom}
+Téléphone : ${data.prospect_tel}
+Adresse : ${data.prospect_adresse}
+    `,
+  });
+
+  // 📩 Confirmation à l’apporteur
   await transporter.sendMail({
     from: process.env.SMTP_USER,
     to: data.apporteur_email,
     subject: "Votre recommandation a bien été reçue",
     text: `
-Bonjour ${data.apporteur_prenom} ${data.apporteur_nom},
+Bonjour ${data.apporteur_prenom},
 
 Nous avons bien reçu votre recommandation.
-Vos données seront enregistrées et protégées dans notre logiciel Hektor - La Boîte Immo
-Nous reviendrons vers vous pour vous informer de l'état d'avancement du dossier et si le dossier aboutit.
+Notre équipe va contacter le prospect dans les meilleurs délais.
 
 Merci pour votre confiance.
 

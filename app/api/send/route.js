@@ -14,11 +14,38 @@ export async function POST(req) {
     },
   });
 
+  // 📩 Mail pour toi
   await transporter.sendMail({
     from: process.env.SMTP_USER,
     to: process.env.SMTP_USER,
     subject: "Nouvel apport d'affaires - Club Timmos",
-    text: JSON.stringify(data, null, 2),
+    text: `
+Nouvel apport :
+
+Nom : ${data.apporteur_nom}
+Email : ${data.apporteur_email}
+Téléphone : ${data.apporteur_tel}
+
+Contact recommandé :
+${data.contact_recommande}
+    `,
+  });
+
+  // 📩 Mail de confirmation à l’apporteur
+  await transporter.sendMail({
+    from: process.env.SMTP_USER,
+    to: data.apporteur_email,
+    subject: "Votre recommandation a bien été reçue",
+    text: `
+Bonjour ${data.apporteur_nom},
+
+Nous avons bien reçu votre recommandation.
+Nous reviendrons vers vous si le dossier aboutit.
+
+Merci pour votre confiance.
+
+L'équipe TimmoS
+    `,
   });
 
   return new Response(JSON.stringify({ success: true }), { status: 200 });

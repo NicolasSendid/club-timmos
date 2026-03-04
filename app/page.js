@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <div className="container">
       <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <Image src="/Logo.png" alt="TimmoS" width={180} height={80} />
+        <Image src="/logo.png" alt="TimmoS" width={180} height={180} />
         <h1>Club Apporteurs Timmos</h1>
         <p>Recevez 300€ par recommandation conclue.</p>
       </div>

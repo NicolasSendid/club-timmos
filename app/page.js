@@ -37,6 +37,10 @@ export default function Home() {
         <input first name="apporteur_prenom" placeholder="Votre prenom" required />
         <input name="apporteur_email" placeholder="Votre email" required />
         <input name="apporteur_tel" placeholder="Votre téléphone" required />
+        <input name="prospect_nom" placeholder="Nom de la personne recommandee" required />
+        <input name="prospect_email" placeholder="Email de la personne recommandee" required />
+        <input name="prospect_tel" placeholder="Telephone de la personne recommandee" required />
+        <input name="prospect_adresse" placeholder="Adresse de la personne recommandee" required />
         <textarea
           name="contact_recommande"
           placeholder="Coordonnées de la personne recommandée"

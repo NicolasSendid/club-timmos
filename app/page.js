@@ -34,6 +34,7 @@ export default function Home() {
 
       <form onSubmit={handleSubmit}>
         <input name="apporteur_nom" placeholder="Votre nom" required />
+        <input first name="apporteur_prenom" placeholder="Votre prenom" required />
         <input name="apporteur_email" placeholder="Votre email" required />
         <input name="apporteur_tel" placeholder="Votre téléphone" required />
         <textarea

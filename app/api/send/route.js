@@ -37,6 +37,8 @@ Prénom : ${data.prospect_prenom}
 Téléphone : ${data.prospect_tel}
 Email : ${data.prospect_email}
 Adresse du bien : ${data.prospect_adresse}
+Type de bien : ${data.type_bien?.join(", ") || "Non précisé"}
+Délai de mise en vente : ${data.delai_vente || "Non précisé"}
 
 Collaborateur sélectionné : ${collaborateurEmail}
     `,
@@ -55,6 +57,8 @@ Nom : ${data.prospect_nom} ${data.prospect_prenom}
 Téléphone : ${data.prospect_tel}
 Email : ${data.prospect_email}
 Adresse : ${data.prospect_adresse}
+Type de bien : ${data.type_bien?.join(", ") || "Non précisé"}
+Délai de mise en vente : ${data.delai_vente || "Non précisé"}
 
 === APPORTEUR ===
 Nom : ${data.apporteur_nom} ${data.apporteur_prenom}

@@ -1,7 +1,5 @@
-
 "use client";
 import { useState } from "react";
-import Image from "next/image";
 
 export default function Home() {
   const [status, setStatus] = useState("");
@@ -27,27 +25,49 @@ export default function Home() {
   return (
     <div className="container">
       <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <Image src="/logo.png" alt="TimmoS" width={180} height={180} />
-        <h1>Club TimmoS</h1>
-        <p>Apporteurs et Partenaires, recevez 300€ pour vos recommandations à la conclusion de l'acte définitif de vente!</p>
+        <img src="/logo.png" alt="Timmos" style={{ width: "200px" }} />
+        <h1>Club Apporteurs Timmos</h1>
+        <p>Recevez 300€ par recommandation conclue.</p>
       </div>
 
       <form onSubmit={handleSubmit}>
-        <input name="apporteur_nom" placeholder="Votre nom" required />
-        <input first name="apporteur_prenom" placeholder="Votre prenom" required />
-        <input name="apporteur_email" placeholder="Votre email" required />
-        <input name="apporteur_tel" placeholder="Votre téléphone" required />
-  
-        <input name="prospect_nom" placeholder="Nom de la personne recommandee" required />
-        <input name="prospect_prenom" placeholder="Prenom de la personne recommandee" required />
-        <input name="prospect_tel" placeholder="Telephone de la personne recommandee" required />      
-        <input name="prospect_email" placeholder="Email de la personne recommandee" required />
-        <input name="prospect_adresse" placeholder="Adresse de la personne recommandee" required />
-        <textarea
-          name="informations_bien"
-          placeholder="Informations sur le bien"
-          required
-        />
+
+        {/* L'APPORTEUR */}
+        <h2 style={{ marginTop: "30px" }}>L'apporteur</h2>
+
+        <input name="apporteur_nom" placeholder="Nom" required />
+        <input name="apporteur_prenom" placeholder="Prénom" required />
+        <input name="apporteur_tel" placeholder="Téléphone" required />
+        <input name="apporteur_email" type="email" placeholder="Email" required />
+
+        {/* LE PROSPECT */}
+        <h2 style={{ marginTop: "30px" }}>Le Prospect</h2>
+
+        <input name="prospect_nom" placeholder="Nom" required />
+        <input name="prospect_prenom" placeholder="Prénom" required />
+        <input name="prospect_tel" placeholder="Téléphone" required />
+        <input name="prospect_email" type="email" placeholder="Email" />
+        <input name="prospect_adresse" placeholder="Adresse du bien" required />
+
+        {/* COLLABORATEUR */}
+        <h2 style={{ marginTop: "30px" }}>Collaborateur en charge</h2>
+
+        <select name="collaborateur" required>
+          <option value="">Sélectionner un collaborateur</option>
+          <option value="marie@agence.fr">Marie Dupont</option>
+          <option value="paul@agence.fr">Paul Martin</option>
+          <option value="julie@agence.fr">Julie Bernard</option>
+        </select>
+
+        {/* RGPD */}
+        <div style={{ marginTop: "20px" }}>
+          <label style={{ fontSize: "14px" }}>
+            <input type="checkbox" name="rgpd" required />  
+            Je confirme avoir informé le prospect que ses données sont transmises 
+            à l'agence Timmos dans le cadre d'une mise en relation commerciale.
+          </label>
+        </div>
+
         <button type="submit">Envoyer la recommandation</button>
       </form>
 

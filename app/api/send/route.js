@@ -23,6 +23,7 @@ export async function POST(req) {
 Nouvel apport :
 
 Nom : ${data.apporteur_nom}
+Prenom : ${data.apporteur_prenom}
 Email : ${data.apporteur_email}
 Téléphone : ${data.apporteur_tel}
 
@@ -45,7 +46,7 @@ ${data.informations_bien}
     to: data.apporteur_email,
     subject: "Votre recommandation a bien été reçue",
     text: `
-Bonjour ${data.apporteur_nom},
+Bonjour ${date.apporteur_prenom} ${data.apporteur_nom},
 
 Nous avons bien reçu votre recommandation.
 Vos données seront enregistrées et protégées dans notre logiciel Hektor - La Boîte Immo

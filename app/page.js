@@ -36,6 +36,9 @@ export default function Home() {
         <input name="apporteur_nom" placeholder="Votre nom" required />
         <input name="apporteur_email" placeholder="Votre email" required />
         <input name="apporteur_tel" placeholder="Votre téléphone" required />
+      </div>
+
+      <form onSubmit={handleSubmit}>
         <input name="prospect_nom" placeholder="Nom de la personne recommandée" required />
         <input name="prospect_email" placeholder="Email de la personne recommandée" required />
         <input name="prospect_tel" placeholder="Téléphone de la personne recommandée" required />

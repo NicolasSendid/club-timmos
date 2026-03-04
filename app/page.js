@@ -32,6 +32,10 @@ export default function Home() {
         <p>Apporteurs et Partenaires, recevez 300€ pour vos recommandations à la conclusion de l'acte définitif de vente!</p>
       </div>
 
+   <div className="container">
+      <div style={{ textAlign: "center", marginBottom: "30px" }}>
+        <h1>Coordonnées Apporteur</h1>
+  
       <form onSubmit={handleSubmit}>
         <input name="apporteur_nom" placeholder="Votre nom" required />
         <input first name="apporteur_prenom" placeholder="Votre prenom" required />

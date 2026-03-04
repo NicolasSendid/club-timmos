@@ -18,7 +18,7 @@ export async function POST(req) {
   await transporter.sendMail({
     from: process.env.SMTP_USER,
     to: process.env.SMTP_USER,
-    subject: "Nouvel apport d'affaires - Club Timmos",
+    subject: "Nouvel apport d'affaires - Club TimmoS",
     text: `
 Nouvel apport :
 
@@ -40,11 +40,12 @@ ${data.contact_recommande}
 Bonjour ${data.apporteur_nom},
 
 Nous avons bien reçu votre recommandation.
+Vos données seront enregistrées et protégées dans notre logiciel Hektor - La Boîte Immo
 Nous reviendrons vers vous si le dossier aboutit.
 
 Merci pour votre confiance.
 
-L'équipe Timmos
+L'équipe TimmoS
     `,
   });
 

@@ -41,7 +41,7 @@ Bonjour ${data.apporteur_nom},
 
 Nous avons bien reçu votre recommandation.
 Vos données seront enregistrées et protégées dans notre logiciel Hektor - La Boîte Immo
-Nous reviendrons vers vous si le dossier aboutit.
+Nous reviendrons vers vous pour vous informer de l'état d'avancement du dossier et si le dossier aboutit.
 
 Merci pour votre confiance.
 

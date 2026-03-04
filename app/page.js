@@ -34,7 +34,7 @@ export default function Home() {
       <div style={{ textAlign: "center", marginBottom: "30px" }}>
         <Image src="/logo.png" alt="TimmoS" width={180} height={180} />
         <h1>Club Apporteurs TimmoS</h1>
-        <p>Apporteurs et Partenaires, vos recommandations sont récompensées dès l'acte définitif de vente signé.</p>
+        <p>Apporteurs et Partenaires, vos recommandations sont recompensees a l'acte définitif de vente.</p>
       </div>
 
         {/* L'APPORTEUR */}

@@ -32,7 +32,6 @@ export default function Home() {
         <p>Apporteurs et Partenaires, recevez 300€ pour vos recommandations à la conclusion de l'acte définitif de vente!</p>
       </div>
 
-   return (
     <div className="container">
       <div style={{ textAlign: "center", marginBottom: "30px" }}>
         <Image src="/logo.png" alt="TimmoS" width={180} height={180} />

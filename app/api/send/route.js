@@ -34,8 +34,8 @@ Téléphone : ${data.prospect_tel}
 Email : ${data.prospect_email}
 Adresse : ${data.prospect_adresse}
 
-Contact recommandé :
-${data.contact_recommande}
+Informations sur le bien :
+${data.informations_bien}
     `,
   });
 

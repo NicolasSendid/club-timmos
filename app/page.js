@@ -48,6 +48,10 @@ export default function Home() {
         <input name="prospect_tel" placeholder="Téléphone" required />
         <input name="prospect_email" type="email" placeholder="Email" />
         <input name="prospect_adresse" placeholder="Adresse du bien" required />
+   <textarea
+          name="Infos_bien"
+          placeholder="Informations sur le bien"
+          required
 
         {/* COLLABORATEUR */}
         <h2 style={{ marginTop: "30px" }}>Collaborateur en charge</h2>

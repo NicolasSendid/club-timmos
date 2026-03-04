@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Club Timmos",
-  description: "Programme Apporteurs d'Affaires - Timmos",
+  description: "Programme Apporteurs d'Affaires - TimmoS",
 };
 
 import './globals.css';

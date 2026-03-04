@@ -1,3 +1,5 @@
+const dossierNumber = `TIM-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+
 import nodemailer from "nodemailer";
 
 export async function POST(req) {

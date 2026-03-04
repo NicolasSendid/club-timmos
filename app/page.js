@@ -11,7 +11,18 @@ export default function Home() {
     const res = await fetch("/api/send", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(Object.fromEntries(formData)),
+      const types = formData.getAll("type_bien");
+
+const payload = {
+  ...Object.fromEntries(formData),
+  type_bien: types
+};
+
+const res = await fetch("/api/send", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(payload),
+});
     });
 
     if (res.ok) {

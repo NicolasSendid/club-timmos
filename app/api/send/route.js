@@ -2,8 +2,13 @@ const dossierNumber = `TIM-${new Date().getFullYear()}-${Math.floor(1000 + Math.
 
 import nodemailer from "nodemailer";
 
-export async function POST(req) {
-  const data = await req.json();
+const data = await req.json();
+
+// sécurisation complète
+const types = Array.isArray(data.type_bien) ? data.type_bien : [];
+const typeBienText = types.length ? types.join(", ") : "Non précisé";
+
+const delai = data.delai_vente || "Non précisé";
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,

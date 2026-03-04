@@ -38,7 +38,7 @@ Téléphone : ${data.prospect_tel}
 Email : ${data.prospect_email}
 Adresse du bien : ${data.prospect_adresse}
 
-Type de bien : ${data.type_bien?.join(", ") || "Non précisé"}
+Type de bien : ${data.type_bien?.length ? data.type_bien.join(", ") : "Non précisé"}
 Délai de mise en vente : ${data.delai_vente || "Non précisé"}
 
 Collaborateur sélectionné : ${collaborateurEmail}
@@ -59,7 +59,7 @@ Téléphone : ${data.prospect_tel}
 Email : ${data.prospect_email}
 Adresse : ${data.prospect_adresse}
 
-Type de bien : ${data.type_bien?.join(", ") || "Non précisé"}
+Type de bien : ${data.type_bien?.length ? data.type_bien.join(", ") : "Non précisé"}
 Délai de mise en vente : ${data.delai_vente || "Non précisé"}
 
 === APPORTEUR ===

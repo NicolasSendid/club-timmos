@@ -29,9 +29,13 @@ export default function Home() {
     }
   };
 
-  return (
-    <div style={{ maxWidth: "600px", margin: "0 auto", padding: "20px" }}>
-      <form onSubmit={handleSubmit}>
+    return (
+    <div className="container">
+      <div style={{ textAlign: "center", marginBottom: "30px" }}>
+        <Image src="/logo.png" alt="TimmoS" width={180} height={180} />
+        <h1>Club Apporteurs TimmoS</h1>
+        <p>Apporteurs et Partenaires, vos recommandations sont récompensées dès l'acte définitif de vente signé.</p>
+      </div>
 
         {/* L'APPORTEUR */}
         <h2 style={{ marginTop: "30px" }}>L'apporteur</h2>

@@ -9,7 +9,8 @@ export default function InstallPrompt() {
 
   useEffect(() => {
     const userAgent = window.navigator.userAgent.toLowerCase();
-    const ios = /iphone|ipad|ipod/.test(userAgent);
+    const ios = /iphone|ipad|ipod/.test(userAgent) 
+  || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     setIsIOS(ios);
 
     const alreadyShown = localStorage.getItem("installPromptShown");

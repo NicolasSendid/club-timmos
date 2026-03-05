@@ -1,3 +1,6 @@
+import './globals.css';
+import InstallPrompt from "./InstallPrompt";
+
 export const metadata = {
   title: "Club TimmoS",
   description: "Programme Apporteurs d'Affaires - TimmoS",
@@ -5,12 +8,13 @@ export const metadata = {
   themeColor: "#111111"
 };
 
-import './globals.css';
-
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body>
+        {children}
+        <InstallPrompt />
+      </body>
     </html>
   );
 }

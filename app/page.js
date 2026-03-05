@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 export default function Home() {
+
   const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
@@ -10,6 +11,7 @@ export default function Home() {
 
     const formData = new FormData(e.target);
     const types = formData.getAll("type_bien");
+
     const data = Object.fromEntries(formData.entries());
     data.type_bien = types;
 
@@ -29,23 +31,19 @@ export default function Home() {
     }
   };
 
-    return (
-    <div className="container">
-      <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <Image src="/logo.png" alt="TimmoS" width={180} height={180} />
-        <h1>Club Apporteurs TimmoS</h1>
-        <p>Apporteurs et Partenaires, vos recommandations sont recompensees a l'acte définitif de vente.</p>
-      </div>
+  return (
 
-        {/* L'APPORTEUR */}
-        <h2 style={{ marginTop: "30px" }}>L'apporteur</h2>
+    <div style={{ maxWidth: "600px", margin: "auto", padding: "20px" }}>
+
+      <form onSubmit={handleSubmit}>
+
+        <h2>L'apporteur</h2>
 
         <input name="apporteur_nom" placeholder="Nom" required />
         <input name="apporteur_prenom" placeholder="Prénom" required />
         <input name="apporteur_tel" placeholder="Téléphone" required />
         <input name="apporteur_email" type="email" placeholder="Email" required />
 
-        {/* VOTRE RECOMMANDATION */}
         <h2 style={{ marginTop: "30px" }}>Votre recommandation</h2>
 
         <input name="prospect_nom" placeholder="Nom" required />
@@ -56,25 +54,18 @@ export default function Home() {
 
         <h3 style={{ marginTop: "20px" }}>Type de bien</h3>
 
-        <div style={{ marginTop: "10px" }}>
-          <label><input type="checkbox" name="type_bien" value="Maison" /> Maison</label><br />
-          <label><input type="checkbox" name="type_bien" value="Appartement" /> Appartement</label><br />
-          <label><input type="checkbox" name="type_bien" value="Terrain" /> Terrain</label><br />
-          <label><input type="checkbox" name="type_bien" value="Immeuble" /> Immeuble</label><br />
-          <label><input type="checkbox" name="type_bien" value="Commerce" /> Commerce</label>
-        </div>
+        <label><input type="checkbox" name="type_bien" value="Maison" /> Maison</label><br />
+        <label><input type="checkbox" name="type_bien" value="Appartement" /> Appartement</label><br />
+        <label><input type="checkbox" name="type_bien" value="Terrain" /> Terrain</label><br />
+        <label><input type="checkbox" name="type_bien" value="Immeuble" /> Immeuble</label><br />
+        <label><input type="checkbox" name="type_bien" value="Commerce" /> Commerce</label>
 
-        <h3 style={{ marginTop: "20px" }}>
-          Délai estimé de mise en vente (facultatif)
-        </h3>
+        <h3 style={{ marginTop: "20px" }}>Délai estimé de mise en vente</h3>
 
-        <div style={{ marginTop: "10px" }}>
-          <label><input type="radio" name="delai_vente" value="Moins de 3 mois" /> Moins de 3 mois</label><br />
-          <label><input type="radio" name="delai_vente" value="Moins de 6 mois" /> Moins de 6 mois</label><br />
-          <label><input type="radio" name="delai_vente" value="Plus de 6 mois" /> Plus de 6 mois</label>
-        </div>
+        <label><input type="radio" name="delai_vente" value="Moins de 3 mois" /> Moins de 3 mois</label><br />
+        <label><input type="radio" name="delai_vente" value="Moins de 6 mois" /> Moins de 6 mois</label><br />
+        <label><input type="radio" name="delai_vente" value="Plus de 6 mois" /> Plus de 6 mois</label>
 
-        {/* COLLABORATEUR */}
         <h2 style={{ marginTop: "30px" }}>Collaborateur en charge</h2>
 
         <select name="collaborateur" required>
@@ -85,12 +76,10 @@ export default function Home() {
           <option value="heloise.timmos@gmail.com">Héloïse SENDID IUNGWIRTH</option>
         </select>
 
-        {/* RGPD */}
         <div style={{ marginTop: "20px" }}>
-          <label style={{ fontSize: "14px" }}>
+          <label>
             <input type="checkbox" name="rgpd" required />
-            Je confirme avoir informé le prospect que ses données sont transmises 
-            à l'agence TimmoS dans le cadre d'une mise en relation commerciale.
+            Je confirme avoir informé le prospect de la transmission de ses données à l'agence TimmoS.
           </label>
         </div>
 
@@ -103,6 +92,8 @@ export default function Home() {
       <p style={{ marginTop: "20px", textAlign: "center" }}>
         {status}
       </p>
+
     </div>
+
   );
 }

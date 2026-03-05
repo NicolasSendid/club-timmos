@@ -75,7 +75,7 @@ ${delai}
     subject: "Votre recommandation a bien été enregistrée",
     text: `
 
-Bonjour ${data.apporteur_prenom},
+Bonjour ${data.apporteur_prenom} ${data.apporteur_nom},
 
 Merci pour votre recommandation.
 

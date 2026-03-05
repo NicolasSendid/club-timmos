@@ -7,14 +7,16 @@ export default function Home() {
   const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const types = formData.getAll("type_bien");
+  const formData = new FormData(e.target);
 
-    const data = Object.fromEntries(formData.entries());
-    data.type_bien = types;
+  const data = Object.fromEntries(formData.entries());
 
+  data.type_bien = formData.getAll("type_bien");
+  data.delai_vente = formData.get("delai_vente");
+
+  try {
     const response = await fetch("/api/send", {
       method: "POST",
       headers: {
@@ -29,7 +31,11 @@ export default function Home() {
     } else {
       setStatus("❌ Une erreur est survenue.");
     }
-  };
+
+  } catch (error) {
+    setStatus("❌ Impossible d'envoyer la recommandation.");
+  }
+};
 
   return (
 

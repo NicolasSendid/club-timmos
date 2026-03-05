@@ -1,95 +1,109 @@
-const dossierNumber = `TIM-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
-
 import nodemailer from "nodemailer";
 
-const data = await req.json();
+export async function POST(req) {
 
-// sécurisation complète
-const types = Array.isArray(data.type_bien) ? data.type_bien : [];
-const typeBienText = types.length ? types.join(", ") : "Non précisé";
+  const data = await req.json();
 
-const delai = data.delai_vente || "Non précisé";
+  // sécurisation des champs
+  const types = Array.isArray(data.type_bien) ? data.type_bien : [];
+  const typeBien = types.length ? types.join(", ") : "Non précisé";
+  const delai = data.delai_vente || "Non précisé";
+
+  // génération numéro dossier
+  const dossier = "TIM-" + Date.now();
 
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: 465,
-    secure: true,
+    service: "gmail",
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
     },
   });
 
-  const collaborateurEmail = data.collaborateur;
+  // EMAIL AGENCE + COLLABORATEUR
 
-  // 📩 Mail interne principal
-  subject: `Nouveau dossier ${dossierNumber}`,
-  await transporter.sendMail({
-    from: process.env.SMTP_USER,
-    to: process.env.SMTP_USER,
-    subject: "Nouvel apport d'affaires - Club TimmoS",
+  const mailAgence = {
+    from: process.env.EMAIL_USER,
+    to: [
+      "timmosbatignolles@gmail.com",
+      data.collaborateur
+    ],
+    subject: "Nouvel apport d'affaire - " + dossier,
     text: `
-=== APPORTEUR ===
-Dossier : ${dossierNumber}
+
+NOUVEL APPORT D'AFFAIRE
+
+Numéro dossier : ${dossier}
+
+=====================
+APPORTEUR
+=====================
+
 Nom : ${data.apporteur_nom}
 Prénom : ${data.apporteur_prenom}
 Téléphone : ${data.apporteur_tel}
 Email : ${data.apporteur_email}
 
-=== PROSPECT ===
+=====================
+PROSPECT
+=====================
+
 Nom : ${data.prospect_nom}
 Prénom : ${data.prospect_prenom}
 Téléphone : ${data.prospect_tel}
-Email : ${data.prospect_email}
-Adresse du bien : ${data.prospect_adresse}
+Email : ${data.prospect_email || "Non renseigné"}
 
-Type de bien : ${typeBienText}
-Délai de mise en vente : ${delai}
+Adresse du bien :
+${data.prospect_adresse}
 
-Collaborateur sélectionné : ${collaborateurEmail}
-    `,
-  });
+Type de bien :
+${typeBien}
 
-  // 📩 Copie au collaborateur
- await transporter.sendMail({
-  from: process.env.SMTP_USER,
-  to: collaborateurEmail,
-  subject: `Nouveau dossier ${dossierNumber} attribué`,
-  text: `
-Dossier : ${dossierNumber}
+Délai estimé de mise en vente :
+${delai}
 
-=== PROSPECT ===
-Nom : ${data.prospect_nom} ${data.prospect_prenom}
-Téléphone : ${data.prospect_tel}
-Email : ${data.prospect_email}
-Adresse : ${data.prospect_adresse}
+`
+  };
 
-Type de bien : ${typeBienText}
-Délai de mise en vente : ${delai}
+  // EMAIL CONFIRMATION APPORTEUR
 
-=== APPORTEUR ===
-Nom : ${data.apporteur_nom} ${data.apporteur_prenom}
-Téléphone : ${data.apporteur_tel}
-Email : ${data.apporteur_email}
-  `,
-});
-  
-  // 📩 Confirmation à l’apporteur
-  await transporter.sendMail({
-    from: process.env.SMTP_USER,
+  const mailApporteur = {
+    from: process.env.EMAIL_USER,
     to: data.apporteur_email,
-    subject: "Votre recommandation a bien été reçue",
+    subject: "Votre recommandation a bien été enregistrée",
     text: `
+
 Bonjour ${data.apporteur_prenom},
 
-Nous avons bien reçu votre recommandation.
-Notre équipe va contacter le prospect dans les meilleurs délais.
+Merci pour votre recommandation.
 
-Merci pour votre confiance.
+Votre dossier a bien été enregistré sous le numéro :
+
+${dossier}
+
+Notre équipe va prendre contact avec votre prospect dans les meilleurs délais.
+
+Nous vous rappelons que la rémunération prévue est de 300€ versés après la signature de l'acte authentique de vente.
 
 L'équipe TimmoS
-    `,
-  });
 
-  return new Response(JSON.stringify({ success: true }), { status: 200 });
+`
+  };
+
+  try {
+
+    await transporter.sendMail(mailAgence);
+    await transporter.sendMail(mailApporteur);
+
+    return Response.json({ success: true });
+
+  } catch (error) {
+
+    console.error(error);
+
+    return Response.json(
+      { success: false, error: error.message },
+      { status: 500 }
+    );
+  }
 }

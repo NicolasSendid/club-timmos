@@ -4,28 +4,28 @@ export async function POST(req) {
 
   const data = await req.json();
 
-  // sécurisation des champs
+  // sécurisation
   const types = Array.isArray(data.type_bien) ? data.type_bien : [];
   const typeBien = types.length ? types.join(", ") : "Non précisé";
   const delai = data.delai_vente || "Non précisé";
 
-  // génération numéro dossier
+  // numéro dossier
   const dossier = "TIM-" + Date.now();
 
- const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
 
-  // EMAIL AGENCE + COLLABORATEUR
+  // EMAIL AGENCE
 
   const mailAgence = {
-    from: process.env.EMAIL_USER,
+    from: process.env.SMTP_USER,
     to: [
       "timmosbatignolles@gmail.com",
       data.collaborateur
@@ -67,10 +67,10 @@ ${delai}
 `
   };
 
-  // EMAIL CONFIRMATION APPORTEUR
+  // EMAIL APPORTEUR
 
   const mailApporteur = {
-    from: process.env.EMAIL_USER,
+    from: process.env.SMTP_USER,
     to: data.apporteur_email,
     subject: "Votre recommandation a bien été enregistrée",
     text: `
@@ -94,18 +94,31 @@ L'équipe TimmoS
 
   try {
 
+    // envoi emails
     await transporter.sendMail(mailAgence);
     await transporter.sendMail(mailApporteur);
 
-     // ENREGISTREMENT GOOGLE SHEETS
+    // ENVOI GOOGLE SHEETS
 
     await fetch("https://script.google.com/macros/s/AKfycbz_UoC0p1_dLLOVtzEBsGSh1jtyhk-4oE76ashJlmi4kD7et3y3LHfeLM0I3G1bSbX1/exec", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
-        dossier,
-        ...data,
+        dossier: dossier,
+        apporteur_nom: data.apporteur_nom,
+        apporteur_prenom: data.apporteur_prenom,
+        apporteur_tel: data.apporteur_tel,
+        apporteur_email: data.apporteur_email,
+        prospect_nom: data.prospect_nom,
+        prospect_prenom: data.prospect_prenom,
+        prospect_tel: data.prospect_tel,
+        prospect_email: data.prospect_email,
+        prospect_adresse: data.prospect_adresse,
         type_bien: typeBien,
-        delai_vente: delai
+        delai_vente: delai,
+        collaborateur: data.collaborateur
       })
     });
 
@@ -119,5 +132,6 @@ L'équipe TimmoS
       { success: false },
       { status: 500 }
     );
+
   }
 }

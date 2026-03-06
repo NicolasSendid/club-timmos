@@ -97,6 +97,18 @@ L'équipe TimmoS
     await transporter.sendMail(mailAgence);
     await transporter.sendMail(mailApporteur);
 
+     // ENREGISTREMENT GOOGLE SHEETS
+
+    await fetch("URL_GOOGLE_SCRIPT", {
+      method: "POST",
+      body: JSON.stringify({
+        dossier,
+        ...data,
+        type_bien: typeBien,
+        delai_vente: delai
+      })
+    });
+
     return Response.json({ success: true });
 
   } catch (error) {
@@ -104,7 +116,7 @@ L'équipe TimmoS
     console.error(error);
 
     return Response.json(
-      { success: false, error: error.message },
+      { success: false },
       { status: 500 }
     );
   }

@@ -1,10 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
 
   const [status, setStatus] = useState("");
+  const [count, setCount] = useState(null);
+  useEffect(() => {
+
+  fetch("https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbz_UoC0p1_dLLOVtzEBsGSh1jtyhk-4oE76ashJlmi4kD7et3y3LHfeLM0I3G1bSbX1/exec/exec?action=count")
+    .then((res) => res.json())
+    .then((data) => {
+      setCount(data.count);
+    })
+    .catch(() => {});
+
+}, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,6 +61,18 @@ export default function Home() {
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
         <img src="/logo.png" style={{ width: "160px" }} />
       </div>
+{count !== null && count >= 30 && (
+
+  <div style={{
+    textAlign: "center",
+    marginBottom: "20px",
+    fontSize: "18px",
+    color: "#444"
+  }}>
+    ⭐ Déjà <b>{count}</b> recommandations reçues
+  </div>
+
+)}
 
       {/* TITRE */}
 

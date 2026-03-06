@@ -36,8 +36,9 @@ export default function Home() {
       });
 
       if (response.ok) {
-        setStatus("✅ Votre recommandation a bien été envoyée !");
-        e.target.reset();
+  setStatus("✅ Votre recommandation a bien été envoyée !");
+  setCount(count + 1);
+  e.target.reset();
       } else {
         setStatus("❌ Une erreur est survenue.");
       }

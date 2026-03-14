@@ -6,27 +6,30 @@ export default function Home() {
 
   const [status, setStatus] = useState("");
   const [count, setCount] = useState(null);
+
   useEffect(() => {
 
-  fetch("https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbz_UoC0p1_dLLOVtzEBsGSh1jtyhk-4oE76ashJlmi4kD7et3y3LHfeLM0I3G1bSbX1/exec/exec?action=count")
-    .then((res) => res.json())
-    .then((data) => {
-      setCount(data.count);
-    })
-    .catch(() => {});
+    fetch("https://script.google.com/macros/s/AKfycbz_UoC0p1_dLLOVtzEBsGSh1jtyhk-4oE76ashJlmi4kD7et3y3LHfeLM0I3G1bSbX1/exec?action=count")
+      .then((res) => res.json())
+      .then((data) => {
+        setCount(data.count);
+      })
+      .catch(() => {});
 
-}, []);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
+
     const data = Object.fromEntries(formData.entries());
 
     data.type_bien = formData.getAll("type_bien");
     data.delai_vente = formData.get("delai_vente");
 
     try {
+
       const response = await fetch("/api/send", {
         method: "POST",
         headers: {
@@ -36,9 +39,43 @@ export default function Home() {
       });
 
       if (response.ok) {
-  setStatus("✅ Votre recommandation a bien été envoyée !");
-  setCount(count + 1);
-  e.target.reset();
+
+        setStatus("✅ Votre recommandation a bien été envoyée !");
+        setCount(count + 1);
+        e.target.reset();
+
+        // MESSAGE WHATSAPP SELON COLLABORATEUR
+
+        let phone = "";
+
+        if (data.collaborateur === "nstimmos@gmail.com") phone = "33624383273";
+        if (data.collaborateur === "cstimmos@gmail.com") phone = "33634521079";
+        if (data.collaborateur === "gdstimmos@gmail.com") phone = "33628597844";
+        if (data.collaborateur === "heloise.timmos@gmail.com") phone = "33625888922";
+
+        const message = encodeURIComponent(
+`Nouvelle recommandation Club TimmoS
+
+Apporteur :
+${data.apporteur_prenom} ${data.apporteur_nom}
+${data.apporteur_tel}
+
+Prospect :
+${data.prospect_prenom} ${data.prospect_nom}
+${data.prospect_tel}
+
+Adresse :
+${data.prospect_adresse}
+
+Type de bien :
+${data.type_bien.join(", ")}
+
+Délai estimé :
+${data.delai_vente}`
+        );
+
+        window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+
       } else {
         setStatus("❌ Une erreur est survenue.");
       }
@@ -62,18 +99,19 @@ export default function Home() {
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
         <img src="/logo.png" style={{ width: "160px" }} />
       </div>
-{count !== null && count >= 30 && (
 
-  <div style={{
-    textAlign: "center",
-    marginBottom: "20px",
-    fontSize: "18px",
-    color: "#444"
-  }}>
-    ⭐ Déjà <b>{count}</b> recommandations reçues
-  </div>
+      {count !== null && count >= 30 && (
 
-)}
+        <div style={{
+          textAlign: "center",
+          marginBottom: "20px",
+          fontSize: "18px",
+          color: "#444"
+        }}>
+          ⭐ Déjà <b>{count}</b> recommandations reçues
+        </div>
+
+      )}
 
       {/* TITRE */}
 
@@ -104,16 +142,12 @@ export default function Home() {
         borderRadius: "10px"
       }}>
 
-        {/* APPORTEUR */}
-
         <h2>L'apporteur</h2>
 
         <input name="apporteur_nom" placeholder="Nom" required />
         <input name="apporteur_prenom" placeholder="Prénom" required />
         <input name="apporteur_tel" placeholder="Téléphone" required />
         <input name="apporteur_email" type="email" placeholder="Email" required />
-
-        {/* PROSPECT */}
 
         <h2 style={{ marginTop: "30px" }}>Le prospect</h2>
 
@@ -123,8 +157,6 @@ export default function Home() {
         <input name="prospect_email" type="email" placeholder="Email" />
         <input name="prospect_adresse" placeholder="Adresse du bien" required />
 
-        {/* TYPE BIEN */}
-
         <h3 style={{ marginTop: "20px" }}>Type de bien</h3>
 
         <label><input type="checkbox" name="type_bien" value="Maison" /> Maison</label><br />
@@ -133,8 +165,6 @@ export default function Home() {
         <label><input type="checkbox" name="type_bien" value="Immeuble" /> Immeuble</label><br />
         <label><input type="checkbox" name="type_bien" value="Commerce" /> Commerce</label>
 
-        {/* DELAI */}
-
         <h3 style={{ marginTop: "20px" }}>
           Délai estimé de mise en vente
         </h3>
@@ -142,8 +172,6 @@ export default function Home() {
         <label><input type="radio" name="delai_vente" value="Moins de 3 mois" /> Moins de 3 mois</label><br />
         <label><input type="radio" name="delai_vente" value="Moins de 6 mois" /> Moins de 6 mois</label><br />
         <label><input type="radio" name="delai_vente" value="Plus de 6 mois" /> Plus de 6 mois</label>
-
-        {/* COLLABORATEUR */}
 
         <h2 style={{ marginTop: "30px" }}>Collaborateur TimmoS</h2>
 
@@ -155,8 +183,6 @@ export default function Home() {
           <option value="heloise.timmos@gmail.com">Héloïse SENDID IUNGWIRTH</option>
         </select>
 
-        {/* RGPD */}
-
         <div style={{ marginTop: "20px", fontSize: "14px" }}>
           <label>
             <input type="checkbox" name="rgpd" required />
@@ -164,8 +190,6 @@ export default function Home() {
             transmises à l'agence TimmoS dans le cadre d'une mise en relation.
           </label>
         </div>
-
-        {/* BOUTON ENVOI */}
 
         <button type="submit" style={{
           marginTop: "25px",
@@ -179,8 +203,6 @@ export default function Home() {
         }}>
           Envoyer la recommandation
         </button>
-
-        {/* BOUTONS SITE */}
 
         <div style={{
           marginTop: "20px",
@@ -223,8 +245,6 @@ export default function Home() {
 
       </form>
 
-      {/* STATUS */}
-
       <p style={{
         marginTop: "20px",
         textAlign: "center",
@@ -233,7 +253,34 @@ export default function Home() {
         {status}
       </p>
 
-      {/* RGPD BAS PAGE */}
+      {/* RESEAUX SOCIAUX */}
+
+      <div style={{
+        marginTop: "40px",
+        textAlign: "center"
+      }}>
+
+        <p style={{ fontWeight: "bold" }}>Suivez-nous</p>
+
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "15px",
+          marginTop: "10px",
+          flexWrap: "wrap"
+        }}>
+
+          <a href="https://share.google/PVYCH20aRFheURVs8" target="_blank">Google</a>
+          <a href="https://www.facebook.com/TimmosBatignolles" target="_blank">Facebook</a>
+          <a href="https://www.instagram.com/timmosai/" target="_blank">Instagram</a>
+          <a href="https://www.tiktok.com/@timmos" target="_blank">TikTok</a>
+          <a href="https://www.linkedin.com/company/timmos/posts/?feedView=all" target="_blank">LinkedIn</a>
+
+        </div>
+
+      </div>
+
+      {/* RGPD */}
 
       <div style={{
         textAlign: "center",
@@ -247,6 +294,22 @@ export default function Home() {
           style={{ color: "#777", textDecoration: "none" }}
         >
           Politique de confidentialité et RGPD
+        </a>
+      </div>
+
+      {/* MENTIONS LEGALES */}
+
+      <div style={{
+        textAlign: "center",
+        marginTop: "10px",
+        fontSize: "12px"
+      }}>
+        <a
+          href="https://www.timmos.fr/mentions-legales"
+          target="_blank"
+          style={{ color: "#777", textDecoration: "none" }}
+        >
+          Mentions légales
         </a>
       </div>
 

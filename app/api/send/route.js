@@ -12,6 +12,9 @@ export async function POST(req) {
   // numéro dossier
   const dossier = "TIM-" + Date.now();
 
+  // date lisible
+  const date = new Date().toLocaleString("fr-FR");
+
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: 465,
@@ -36,6 +39,7 @@ export async function POST(req) {
 NOUVEL APPORT D'AFFAIRE
 
 Numéro dossier : ${dossier}
+Date : ${date}
 
 =====================
 APPORTEUR
@@ -106,6 +110,7 @@ L'équipe TimmoS
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
+        date: date,
         dossier: dossier,
         apporteur_nom: data.apporteur_nom,
         apporteur_prenom: data.apporteur_prenom,

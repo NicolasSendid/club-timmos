@@ -301,7 +301,7 @@ ${data.delai_vente}`
     style={{ opacity: 0.7 }}
     onMouseOver={(e)=> e.currentTarget.style.opacity = 1}
     onMouseOut={(e)=> e.currentTarget.style.opacity = 0.7}>
-      <img src="https://cdn.simpleicons.org/linkedin/000000" width="26"/>
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" width="26"/>
     </a>
 
   </div>

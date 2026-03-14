@@ -253,33 +253,45 @@ ${data.delai_vente}`
         {status}
       </p>
 
-      {/* RESEAUX SOCIAUX */}
+     {/* RESEAUX SOCIAUX */}
 
-      <div style={{
-        marginTop: "40px",
-        textAlign: "center"
-      }}>
+<div style={{
+  marginTop: "40px",
+  textAlign: "center"
+}}>
 
-        <p style={{ fontWeight: "bold" }}>Suivez-nous</p>
+  <p style={{ fontWeight: "bold" }}>Suivez-nous</p>
 
-        <div style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "15px",
-          marginTop: "10px",
-          flexWrap: "wrap"
-        }}>
+  <div style={{
+    display: "flex",
+    justifyContent: "center",
+    gap: "18px",
+    marginTop: "12px"
+  }}>
 
-          <a href="https://share.google/PVYCH20aRFheURVs8" target="_blank">Google</a>
-          <a href="https://www.facebook.com/TimmosBatignolles" target="_blank">Facebook</a>
-          <a href="https://www.instagram.com/timmosai/" target="_blank">Instagram</a>
-          <a href="https://www.tiktok.com/@timmos" target="_blank">TikTok</a>
-          <a href="https://www.linkedin.com/company/timmos/posts/?feedView=all" target="_blank">LinkedIn</a>
+    <a href="https://share.google/PVYCH20aRFheURVs8" target="_blank">
+      <img src="https://cdn.simpleicons.org/google/000000" width="26"/>
+    </a>
 
-        </div>
+    <a href="https://www.facebook.com/TimmosBatignolles" target="_blank">
+      <img src="https://cdn.simpleicons.org/facebook/000000" width="26"/>
+    </a>
 
-      </div>
+    <a href="https://www.instagram.com/timmosai/" target="_blank">
+      <img src="https://cdn.simpleicons.org/instagram/000000" width="26"/>
+    </a>
 
+    <a href="https://www.tiktok.com/@timmos" target="_blank">
+      <img src="https://cdn.simpleicons.org/tiktok/000000" width="26"/>
+    </a>
+
+    <a href="https://www.linkedin.com/company/timmos/posts/?feedView=all" target="_blank">
+      <img src="https://cdn.simpleicons.org/linkedin/000000" width="26"/>
+    </a>
+
+  </div>
+
+</div>
       {/* RGPD */}
 
       <div style={{

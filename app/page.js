@@ -321,7 +321,7 @@ ${data.delai_vente}`
         color: "#777",
         lineHeight: "1.6"
       }}>
-        * La prime d'apport d'affaires de 300 € est versée sous réserve de la signature d'un mandat de vente avec l'agence TimmoS dans les 12 mois suivant la recommandation et de la signature de l'acte authentique de vente. Le prospect recommandé ne doit pas être déjà connu de l'agence. Le versement intervient après encaissement des honoraires d'agence.
+        * La prime d'apport d'affaires de 300 € est versée sous réserve de la signature d'un mandat de vente avec l'agence TimmoS dans les 12 mois suivant la recommandation et de la signature de l'acte authentique de vente. Le prospect recommandé ne doit pas être déjà connu de l'agence. Le versement intervient après encaissement des honoraires d'agence. Le versement sera réalisé par virement dans les 15 jours suivants la réception de votre RIB et à conditions que toutes les conditions ci-avant mentionnées soient réalisées. Toute personne majeure peut effectuer une recommandation. Il n’est pas nécessaire d’être un professionnel de l’immobilier ou de posséder un statut particulier. Que vous soyez étudiant, salarié, en reconversion ou retraité, si vous avez un entourage qui cherche à vendre ou acheter, vous pouvez faire des recommandations.
       </div>
 
     </div>

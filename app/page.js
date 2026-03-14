@@ -1,3 +1,4 @@
+```javascript
 "use client";
 
 import { useState, useEffect } from "react";
@@ -22,7 +23,6 @@ export default function Home() {
     e.preventDefault();
 
     const formData = new FormData(e.target);
-
     const data = Object.fromEntries(formData.entries());
 
     data.type_bien = formData.getAll("type_bien");
@@ -97,7 +97,6 @@ ${data.delai_vente}`
       </div>
 
       {count !== null && count >= 30 && (
-
         <div style={{
           textAlign: "center",
           marginBottom: "20px",
@@ -106,13 +105,9 @@ ${data.delai_vente}`
         }}>
           ⭐ Déjà <b>{count}</b> recommandations reçues
         </div>
-
       )}
 
-      <h1 style={{
-        textAlign: "center",
-        marginBottom: "10px"
-      }}>
+      <h1 style={{ textAlign: "center", marginBottom: "10px" }}>
         Club TimmoS
       </h1>
 
@@ -124,7 +119,6 @@ ${data.delai_vente}`
       }}>
         Apporteurs et partenaires,<br />
         et si vos recommandations étaient récompensées ?<br /><br />
-
         <b>300 € pour vous</b> à la conclusion de l'acte définitif de vente*.
       </p>
 
@@ -151,19 +145,19 @@ ${data.delai_vente}`
 
         <h3 style={{ marginTop: "20px" }}>Type de bien</h3>
 
-        <label><input type="checkbox" name="type_bien" value="Maison" /> Maison</label><br />
-        <label><input type="checkbox" name="type_bien" value="Appartement" /> Appartement</label><br />
-        <label><input type="checkbox" name="type_bien" value="Terrain" /> Terrain</label><br />
-        <label><input type="checkbox" name="type_bien" value="Immeuble" /> Immeuble</label><br />
-        <label><input type="checkbox" name="type_bien" value="Commerce" /> Commerce</label>
+        <label><input type="checkbox" name="type_bien" value="Maison"/> Maison</label><br/>
+        <label><input type="checkbox" name="type_bien" value="Appartement"/> Appartement</label><br/>
+        <label><input type="checkbox" name="type_bien" value="Terrain"/> Terrain</label><br/>
+        <label><input type="checkbox" name="type_bien" value="Immeuble"/> Immeuble</label><br/>
+        <label><input type="checkbox" name="type_bien" value="Commerce"/> Commerce</label>
 
         <h3 style={{ marginTop: "20px" }}>
           Délai estimé de mise en vente
         </h3>
 
-        <label><input type="radio" name="delai_vente" value="Moins de 3 mois" /> Moins de 3 mois</label><br />
-        <label><input type="radio" name="delai_vente" value="Moins de 6 mois" /> Moins de 6 mois</label><br />
-        <label><input type="radio" name="delai_vente" value="Plus de 6 mois" /> Plus de 6 mois</label>
+        <label><input type="radio" name="delai_vente" value="Moins de 3 mois"/> Moins de 3 mois</label><br/>
+        <label><input type="radio" name="delai_vente" value="Moins de 6 mois"/> Moins de 6 mois</label><br/>
+        <label><input type="radio" name="delai_vente" value="Plus de 6 mois"/> Plus de 6 mois</label>
 
         <h2 style={{ marginTop: "30px" }}>Collaborateur TimmoS</h2>
 
@@ -177,9 +171,8 @@ ${data.delai_vente}`
 
         <div style={{ marginTop: "20px", fontSize: "14px" }}>
           <label>
-            <input type="checkbox" name="rgpd" required />
-            Je confirme avoir informé le prospect que ses données sont
-            transmises à l'agence TimmoS dans le cadre d'une mise en relation.
+            <input type="checkbox" name="rgpd" required/>
+            Je confirme avoir informé le prospect que ses données sont transmises à l'agence TimmoS dans le cadre d'une mise en relation.
           </label>
         </div>
 
@@ -211,6 +204,45 @@ ${data.delai_vente}`
           Envoyer la recommandation
         </button>
 
+        <div style={{
+          marginTop: "20px",
+          display: "flex",
+          gap: "10px",
+          flexDirection: "column"
+        }}>
+
+          <a
+            href="https://www.timmos.fr"
+            target="_blank"
+            style={{
+              textAlign: "center",
+              background: "#333",
+              color: "white",
+              padding: "10px",
+              borderRadius: "6px",
+              textDecoration: "none"
+            }}
+          >
+            Voir nos biens disponibles
+          </a>
+
+          <a
+            href="https://www.timmos.fr/estimation"
+            target="_blank"
+            style={{
+              textAlign: "center",
+              background: "#777",
+              color: "white",
+              padding: "10px",
+              borderRadius: "6px",
+              textDecoration: "none"
+            }}
+          >
+            Estimer mon bien
+          </a>
+
+        </div>
+
       </form>
 
       <p style={{
@@ -221,21 +253,7 @@ ${data.delai_vente}`
         {status}
       </p>
 
-      <div style={{
-        marginTop: "30px",
-        textAlign: "center",
-        fontSize: "12px",
-        color: "#777",
-        lineHeight: "1.6"
-      }}>
-        * La prime d'apport d'affaires de 300 € est versée sous réserve de la signature d'un mandat de vente avec l'agence TimmoS dans les 12 mois suivant la recommandation et de la signature de l'acte authentique de vente. Le prospect recommandé ne doit pas être déjà connu de l'agence. Le versement intervient après encaissement des honoraires d'agence.
-      </div>
-
-      <div style={{
-        marginTop: "40px",
-        textAlign: "center"
-      }}>
-
+      <div style={{ marginTop: "40px", textAlign: "center" }}>
         <p style={{ fontWeight: "bold" }}>Suivez-nous</p>
 
         <div style={{
@@ -266,7 +284,6 @@ ${data.delai_vente}`
           </a>
 
         </div>
-
       </div>
 
       <div style={{
@@ -296,6 +313,16 @@ ${data.delai_vente}`
         >
           Mentions légales
         </a>
+      </div>
+
+      <div style={{
+        marginTop: "20px",
+        textAlign: "center",
+        fontSize: "11px",
+        color: "#777",
+        lineHeight: "1.6"
+      }}>
+        * La prime d'apport d'affaires de 300 € est versée sous réserve de la signature d'un mandat de vente avec l'agence TimmoS dans les 12 mois suivant la recommandation et de la signature de l'acte authentique de vente. Le prospect recommandé ne doit pas être déjà connu de l'agence. Le versement intervient après encaissement des honoraires d'agence.
       </div>
 
     </div>

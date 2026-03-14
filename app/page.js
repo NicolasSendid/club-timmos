@@ -1,3 +1,4 @@
+```javascript
 "use client";
 
 import { useState, useEffect } from "react";
@@ -43,8 +44,6 @@ export default function Home() {
         setStatus("✅ Votre recommandation a bien été envoyée !");
         setCount(count + 1);
         e.target.reset();
-
-        // MESSAGE WHATSAPP SELON COLLABORATEUR
 
         let phone = "";
 
@@ -94,8 +93,6 @@ ${data.delai_vente}`
       fontFamily: "Arial"
     }}>
 
-      {/* LOGO */}
-
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
         <img src="/logo.png" style={{ width: "160px" }} />
       </div>
@@ -113,16 +110,12 @@ ${data.delai_vente}`
 
       )}
 
-      {/* TITRE */}
-
       <h1 style={{
         textAlign: "center",
         marginBottom: "10px"
       }}>
         Club TimmoS
       </h1>
-
-      {/* ACCROCHE */}
 
       <p style={{
         textAlign: "center",
@@ -133,7 +126,7 @@ ${data.delai_vente}`
         Apporteurs et partenaires,<br />
         et si vos recommandations étaient récompensées ?<br /><br />
 
-        <b>300 € pour vous</b> à la conclusion de l'acte définitif de vente.
+        <b>300 € pour vous</b> à la conclusion de l'acte définitif de vente*.
       </p>
 
       <form onSubmit={handleSubmit} style={{
@@ -191,6 +184,21 @@ ${data.delai_vente}`
           </label>
         </div>
 
+        <div style={{
+          marginTop: "20px",
+          fontSize: "12px",
+          color: "#666",
+          lineHeight: "1.6"
+        }}>
+          <b>Conditions de la recommandation :</b><br/>
+          • La prime de 300 € est versée uniquement en cas de signature de l'acte authentique de vente.<br/>
+          • Le prospect recommandé ne doit pas être déjà connu de l'agence TimmoS.<br/>
+          • La recommandation doit être faite avant toute prise de contact avec l'agence.<br/>
+          • La recommandation doit être concrétisée par la signature d'un mandat de vente avec l'agence TimmoS dans un délai de 12 mois suivant la recommandation.<br/>
+          • Le versement intervient après encaissement des honoraires d'agence.<br/>
+          • L'agence TimmoS se réserve le droit de refuser une recommandation ne respectant pas ces conditions.
+        </div>
+
         <button type="submit" style={{
           marginTop: "25px",
           width: "100%",
@@ -204,45 +212,6 @@ ${data.delai_vente}`
           Envoyer la recommandation
         </button>
 
-        <div style={{
-          marginTop: "20px",
-          display: "flex",
-          gap: "10px",
-          flexDirection: "column"
-        }}>
-
-          <a
-            href="https://www.timmos.fr"
-            target="_blank"
-            style={{
-              textAlign: "center",
-              background: "#333",
-              color: "white",
-              padding: "10px",
-              borderRadius: "6px",
-              textDecoration: "none"
-            }}
-          >
-            Voir nos biens disponibles
-          </a>
-
-          <a
-            href="https://www.timmos.fr/estimation"
-            target="_blank"
-            style={{
-              textAlign: "center",
-              background: "#777",
-              color: "white",
-              padding: "10px",
-              borderRadius: "6px",
-              textDecoration: "none"
-            }}
-          >
-            Estimer mon bien
-          </a>
-
-        </div>
-
       </form>
 
       <p style={{
@@ -253,62 +222,53 @@ ${data.delai_vente}`
         {status}
       </p>
 
-  {/* RESEAUX SOCIAUX */}
+      <div style={{
+        marginTop: "30px",
+        textAlign: "center",
+        fontSize: "12px",
+        color: "#777",
+        lineHeight: "1.6"
+      }}>
+        * La prime d'apport d'affaires de 300 € est versée sous réserve de la signature d'un mandat de vente avec l'agence TimmoS dans les 12 mois suivant la recommandation et de la signature de l'acte authentique de vente. Le prospect recommandé ne doit pas être déjà connu de l'agence. Le versement intervient après encaissement des honoraires d'agence.
+      </div>
 
-<div style={{
-  marginTop: "40px",
-  textAlign: "center"
-}}>
+      <div style={{
+        marginTop: "40px",
+        textAlign: "center"
+      }}>
 
-  <p style={{ fontWeight: "bold" }}>Suivez-nous</p>
+        <p style={{ fontWeight: "bold" }}>Suivez-nous</p>
 
-  <div style={{
-    display: "flex",
-    justifyContent: "center",
-    gap: "18px",
-    marginTop: "12px"
-  }}>
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "18px",
+          marginTop: "12px"
+        }}>
 
-    <a href="https://share.google/PVYCH20aRFheURVs8" target="_blank"
-    style={{ opacity: 0.7 }}
-    onMouseOver={(e)=> e.currentTarget.style.opacity = 1}
-    onMouseOut={(e)=> e.currentTarget.style.opacity = 0.7}>
-      <img src="https://cdn.simpleicons.org/google/000000" width="26"/>
-    </a>
+          <a href="https://share.google/PVYCH20aRFheURVs8" target="_blank">
+            <img src="https://cdn.simpleicons.org/google/000000" width="26"/>
+          </a>
 
-    <a href="https://www.facebook.com/TimmosBatignolles" target="_blank"
-    style={{ opacity: 0.7 }}
-    onMouseOver={(e)=> e.currentTarget.style.opacity = 1}
-    onMouseOut={(e)=> e.currentTarget.style.opacity = 0.7}>
-      <img src="https://cdn.simpleicons.org/facebook/000000" width="26"/>
-    </a>
+          <a href="https://www.facebook.com/TimmosBatignolles" target="_blank">
+            <img src="https://cdn.simpleicons.org/facebook/000000" width="26"/>
+          </a>
 
-    <a href="https://www.instagram.com/timmosai/" target="_blank"
-    style={{ opacity: 0.7 }}
-    onMouseOver={(e)=> e.currentTarget.style.opacity = 1}
-    onMouseOut={(e)=> e.currentTarget.style.opacity = 0.7}>
-      <img src="https://cdn.simpleicons.org/instagram/000000" width="26"/>
-    </a>
+          <a href="https://www.instagram.com/timmosai/" target="_blank">
+            <img src="https://cdn.simpleicons.org/instagram/000000" width="26"/>
+          </a>
 
-    <a href="https://www.tiktok.com/@timmos" target="_blank"
-    style={{ opacity: 0.7 }}
-    onMouseOver={(e)=> e.currentTarget.style.opacity = 1}
-    onMouseOut={(e)=> e.currentTarget.style.opacity = 0.7}>
-      <img src="https://cdn.simpleicons.org/tiktok/000000" width="26"/>
-    </a>
+          <a href="https://www.tiktok.com/@timmos" target="_blank">
+            <img src="https://cdn.simpleicons.org/tiktok/000000" width="26"/>
+          </a>
 
-    <a href="https://www.linkedin.com/company/timmos/posts/?feedView=all" target="_blank"
-    style={{ opacity: 0.7 }}
-    onMouseOver={(e)=> e.currentTarget.style.opacity = 1}
-    onMouseOut={(e)=> e.currentTarget.style.opacity = 0.7}>
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" width="26"/>
-    </a>
+          <a href="https://www.linkedin.com/company/timmos/posts/?feedView=all" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" width="26"/>
+          </a>
 
-  </div>
+        </div>
 
-</div>
-
-      {/* RGPD */}
+      </div>
 
       <div style={{
         textAlign: "center",
@@ -324,8 +284,6 @@ ${data.delai_vente}`
           Politique de confidentialité et RGPD
         </a>
       </div>
-
-      {/* MENTIONS LEGALES */}
 
       <div style={{
         textAlign: "center",

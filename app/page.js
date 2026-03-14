@@ -253,7 +253,7 @@ ${data.delai_vente}`
         {status}
       </p>
 
-     {/* RESEAUX SOCIAUX */}
+  {/* RESEAUX SOCIAUX */}
 
 <div style={{
   marginTop: "40px",
@@ -269,29 +269,45 @@ ${data.delai_vente}`
     marginTop: "12px"
   }}>
 
-    <a href="https://share.google/PVYCH20aRFheURVs8" target="_blank">
+    <a href="https://share.google/PVYCH20aRFheURVs8" target="_blank"
+    style={{ opacity: 0.7 }}
+    onMouseOver={(e)=> e.currentTarget.style.opacity = 1}
+    onMouseOut={(e)=> e.currentTarget.style.opacity = 0.7}>
       <img src="https://cdn.simpleicons.org/google/000000" width="26"/>
     </a>
 
-    <a href="https://www.facebook.com/TimmosBatignolles" target="_blank">
+    <a href="https://www.facebook.com/TimmosBatignolles" target="_blank"
+    style={{ opacity: 0.7 }}
+    onMouseOver={(e)=> e.currentTarget.style.opacity = 1}
+    onMouseOut={(e)=> e.currentTarget.style.opacity = 0.7}>
       <img src="https://cdn.simpleicons.org/facebook/000000" width="26"/>
     </a>
 
-    <a href="https://www.instagram.com/timmosai/" target="_blank">
+    <a href="https://www.instagram.com/timmosai/" target="_blank"
+    style={{ opacity: 0.7 }}
+    onMouseOver={(e)=> e.currentTarget.style.opacity = 1}
+    onMouseOut={(e)=> e.currentTarget.style.opacity = 0.7}>
       <img src="https://cdn.simpleicons.org/instagram/000000" width="26"/>
     </a>
 
-    <a href="https://www.tiktok.com/@timmos" target="_blank">
+    <a href="https://www.tiktok.com/@timmos" target="_blank"
+    style={{ opacity: 0.7 }}
+    onMouseOver={(e)=> e.currentTarget.style.opacity = 1}
+    onMouseOut={(e)=> e.currentTarget.style.opacity = 0.7}>
       <img src="https://cdn.simpleicons.org/tiktok/000000" width="26"/>
     </a>
 
-    <a href="https://www.linkedin.com/company/timmos/posts/?feedView=all" target="_blank">
+    <a href="https://www.linkedin.com/company/timmos/posts/?feedView=all" target="_blank"
+    style={{ opacity: 0.7 }}
+    onMouseOver={(e)=> e.currentTarget.style.opacity = 1}
+    onMouseOut={(e)=> e.currentTarget.style.opacity = 0.7}>
       <img src="https://cdn.simpleicons.org/linkedin/000000" width="26"/>
     </a>
 
   </div>
 
 </div>
+
       {/* RGPD */}
 
       <div style={{

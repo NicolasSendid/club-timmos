@@ -252,20 +252,6 @@ ${data.delai_vente}`
         {status}
       </p>
 
-        <button onClick={handleShare} type="button" style={{
-  marginTop: "5px",
-  width: "100%",
-  padding: "10px",
-  background: "#111",
-  color: "white",
-  border: "none",
-  borderRadius: "6px",
-  fontSize: "14px",
-  cursor: "pointer"
-}}>
-  📲 Partager l’application
-</button>
-
       <div style={{ marginTop: "40px", textAlign: "center" }}>
         <p style={{ fontWeight: "bold" }}>Suivez-nous</p>
 

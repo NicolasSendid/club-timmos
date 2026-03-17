@@ -18,6 +18,20 @@ export default function Home() {
 
   }, []);
 
+  // 🔥 PARTAGE SIMPLE (AJOUT UNIQUEMENT)
+  const handleShare = async () => {
+    const url = window.location.href;
+
+    if (navigator.share) {
+      navigator.share({
+        url: url,
+      });
+    } else {
+      await navigator.clipboard.writeText(url);
+      alert("Lien copié !");
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -239,6 +253,21 @@ ${data.delai_vente}`
           >
             Estimer mon bien
           </a>
+
+          {/* 🔥 BOUTON PARTAGE AJOUT */}
+          <button onClick={handleShare} type="button" style={{
+            marginTop: "5px",
+            width: "100%",
+            padding: "10px",
+            background: "#111",
+            color: "white",
+            border: "none",
+            borderRadius: "6px",
+            fontSize: "14px",
+            cursor: "pointer"
+          }}>
+            📲 Partager l’application
+          </button>
 
         </div>
 
